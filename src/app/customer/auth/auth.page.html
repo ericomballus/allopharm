@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="success"> </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="ion-padding container">
+    <div
+      style="
+        text-align: center;
+        text-transform: uppercase;
+        background-color: #f1f1f1;
+        padding: 5px;
+      "
+    >
+      <h4>LOGIN</h4>
+    </div>
+    <div class="form-container">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" #email required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" #password></ion-input>
+        <ion-icon name="eye" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-button
+        expand="block"
+        class="main-button"
+        (click)="signUp(email, password)"
+        >Log in</ion-button
+      >
+
+      <div class="sign-up">
+        Don't have an account?
+        <ion-button
+          color="dark"
+          fill="clear"
+          routerLink="/inscription"
+          routerDirection="forward"
+          >Sign up</ion-button
+        >
+      </div>
+    </div>
+  </div>
+</ion-content>

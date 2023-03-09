@@ -1,0 +1,10 @@
+{
+  "name": "pharm",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

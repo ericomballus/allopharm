@@ -1,0 +1,142 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.form-container {
+  margin-top: 48px;
+}
+
+.form-container ion-item {
+  --padding-start: 0;
+  --border-color: #dadada;
+}
+
+.form-container ion-item ion-label {
+  color: #a6a6a6;
+}
+
+.form-container ion-item ion-icon {
+  margin-top: auto;
+  color: #c6cbd4;
+}
+
+.form-container ion-button {
+  margin-top: 48px;
+}
+
+.sign-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up ion-button {
+  margin: 0;
+}
+
+.error {
+  text-align: center;
+  padding: 5px;
+  background-color: var(--ion-color-danger);
+}
+.filebtn {
+  opacity: 0;
+  position: absolute;
+  top: -100em;
+  left: -100em;
+  display: none;
+}
+ion-card-header {
+  ion-card-title {
+    text-transform: uppercase;
+  }
+  ion-card-subtitle {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+.header-main {
+  font-weight: 500;
+  // border-bottom: 2px solid #f1f1f1;
+  background-color: #1485ee;
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  ion-col {
+    div {
+      text-transform: uppercase;
+      font-size: 13px;
+      color: black;
+    }
+  }
+}
+ion-invalid {
+  border: 2px solid red;
+}
+
+ion-content {
+  --background: white;
+}
+ion-item {
+  --background: white;
+  color: black;
+  ion-checkbox {
+    --border-color: var(--ion-color-dark);
+  }
+}
+
+.header-tab {
+  font-weight: 500;
+  // border-bottom: 2px solid #f1f1f1;
+  background-color: black;
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 10px;
+
+  ion-col {
+    div {
+      text-transform: uppercase;
+      font-size: 10px;
+      color: white;
+    }
+  }
+}
+.table-row-user {
+  background-color: white;
+  color: black;
+}
+.row-user {
+  background-color: white;
+  color: black;
+}
+.data-row-tab {
+  font-size: 11px;
+}
+.btn {
+  font-size: 9px;
+}

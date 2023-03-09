@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="end">
+      <ion-button
+        slot="end"
+        clear
+        (click)="displayCart()"
+        *ngIf="totalArticles"
+      >
+        {{totalArticles}} <ion-icon name="cart-outline" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="close_modal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="card">
+    <h1>{{medicament.name}}</h1>
+    <p class="price" style="font-size: 10px">
+      {{medicament.sellingPrice}} FCFA
+    </p>
+    <p style="font-size: 10px">
+      FABRIQUE PAR: {{medicament.madeBy ? medicament.madeBy : ''}}
+    </p>
+
+    <p style="font-size: 10px">
+      FORME DOSAGE: {{medicament.dosageForm ? medicament.dosageForm : ''}}
+    </p>
+    <p style="font-size: 10px">
+      TYPE:
+      <small style="text-transform: uppercase"
+        >{{medicament.typeMedicament ? medicament.typeMedicament : ''}}</small
+      >
+    </p>
+    <p style="font-size: 10px">
+      TAILLE:
+      <small style="text-transform: uppercase"
+        >{{medicament.size ? medicament.size : ''}}</small
+      >
+    </p>
+    <p style="font-size: 10px">
+      UNITE:<small style="text-transform: uppercase"
+        >{{medicament.unity ? medicament.unity : ''}}</small
+      >
+    </p>
+    <p>
+      <button (click)="addToCart()">Acheter</button>
+    </p>
+  </div>
+</ion-content>

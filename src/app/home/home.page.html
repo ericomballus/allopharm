@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title> ALLO PHARM </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-group *ngFor="let c of companies_list">
+    <ion-item-divider *ngIf="c.medicamentList.length">
+      <ion-label style="text-transform: uppercase; font-weight: bold">
+        <h3>pharmacie: {{c.name}}</h3>
+        <p>
+          <small style="font-weight: bold; text-transform: uppercase">
+            ville: {{c.ville}}</small
+          >
+        </p>
+      </ion-label>
+    </ion-item-divider>
+    <div *ngIf="c.medicamentList.length">
+      <ion-item
+        *ngFor="let m of c.medicamentList"
+        (click)="display_medicament(m, c)"
+      >
+        <ion-thumbnail slot="start">
+          <img
+            alt="Silhouette of mountains"
+            src="../../assets/images/WhatsApp Image 2023-02-18 at 9.10.00 AM.jpeg"
+          />
+        </ion-thumbnail>
+        <ion-label>
+          <h1 style="font-size: 10px; text-transform: uppercase">{{m.name}}</h1>
+          <p>
+            Prix:
+            <small style="font-weight: bold">{{m.sellingPrice}} FCFA</small>
+          </p>
+        </ion-label>
+      </ion-item>
+    </div>
+  </ion-item-group>
+</ion-content>
