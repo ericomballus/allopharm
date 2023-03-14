@@ -95,6 +95,39 @@ export class InscriptionPage implements OnInit {
         message: 'Password max length should be 200 characters long.',
       },
     ],
+
+    wallet: [
+      {
+        type: 'minlength',
+        message: 'wallet length should be 3 characters long.',
+      },
+      {
+        type: 'maxlength',
+        message: 'wallet max length should be 100 characters long.',
+      },
+    ],
+
+    visa: [
+      {
+        type: 'minlength',
+        message: 'visa length should be 3 characters long.',
+      },
+      {
+        type: 'maxlength',
+        message: 'visa max length should be 100 characters long.',
+      },
+    ],
+
+    userName: [
+      {
+        type: 'minlength',
+        message: 'userName length should be 3 characters long.',
+      },
+      {
+        type: 'maxlength',
+        message: 'userName max length should be 100 characters long.',
+      },
+    ],
   };
   constructor(
     public authService: AuthenticationService,
@@ -117,14 +150,18 @@ export class InscriptionPage implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.pattern('^[a-zA-Z0-9_.+-].*[s]*$'),
+          // Validators.pattern('^[a-zA-Z0-9_.+-].*[s]*$'),
+          Validators.minLength(3),
+          Validators.maxLength(50),
         ])
       ),
       name: new FormControl(
         '',
         Validators.compose([
           Validators.required,
-          Validators.pattern('^[a-zA-Z0-9_.+-].*[s]*$'),
+          //Validators.pattern('^[a-zA-Z0-9_.+-].*[s]*$'),
+          Validators.minLength(3),
+          Validators.maxLength(50),
         ])
       ),
       phone: new FormControl(
@@ -150,6 +187,27 @@ export class InscriptionPage implements OnInit {
           Validators.required,
         ])
       ),
+      wallet: new FormControl(
+        '',
+        Validators.compose([
+          // Validators.required,
+          // Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
+          Validators.minLength(3),
+          Validators.maxLength(50),
+        ])
+      ),
+      visa: new FormControl(
+        '',
+        Validators.compose([Validators.minLength(3), Validators.maxLength(50)])
+      ),
+      userName: new FormControl(
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(50),
+        ])
+      ),
     });
   }
 
@@ -173,11 +231,12 @@ export class InscriptionPage implements OnInit {
         'success',
         3000
       );
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl('auth');
       this.errorMsg = '';
       this.successMsg = 'New user created.';
     } catch (error: any) {
-      window.alert(error.message);
+      this.notifi.dismissLoading();
+      this.notifi.presentToast(error.message, 'danger', 5000);
       this.errorMsg = error.message;
       this.successMsg = '';
     }

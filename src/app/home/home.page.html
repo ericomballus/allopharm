@@ -1,10 +1,36 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-title> ALLO PHARM </ion-title>
+
+    <ion-searchbar
+      debounce="500"
+      animated
+      placeholder="rechercher"
+      (ionChange)="handleInput($event)"
+    ></ion-searchbar>
+    <ion-buttons slot="end" *ngIf="arr.length">
+      <ion-button style="font-size: 13px" size="small" (click)="selectVille()"
+        >valider</ion-button
+      >
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list *ngIf="listab2 && listab2.length > 0">
+    <ion-item *ngFor="let medoc of listab2">
+      <ion-label id="myitem">
+        <h2 style="font-weight: bold; text-transform: uppercase">
+          {{medoc.name}}
+        </h2>
+      </ion-label>
+      <ion-checkbox
+        (ionChange)="addMedicament(medoc)"
+        slot="end"
+        [(ngModel)]="medoc.isChecked"
+      ></ion-checkbox>
+    </ion-item>
+  </ion-list>
   <ion-item-group *ngFor="let c of companies_list">
     <ion-item-divider *ngIf="c.medicamentList.length">
       <ion-label style="text-transform: uppercase; font-weight: bold">

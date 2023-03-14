@@ -8,6 +8,10 @@ import { MedicamentModel } from '../modeles/medicament-model';
 export class SaveRandomService {
   company: any;
   medicament: any;
+  villes: any;
+  ville: any;
+  user: any;
+  content: any;
   constructor() {}
 
   setCompany(company: Company) {
@@ -22,5 +26,40 @@ export class SaveRandomService {
   }
   getMedicament(): MedicamentModel {
     return this.medicament;
+  }
+
+  setVilles(docs) {
+    this.villes = docs;
+  }
+  getVilles() {
+    if (this.villes) {
+      return this.villes;
+    } else {
+      return null;
+    }
+  }
+
+  setVilleRecherche(doc) {
+    this.ville = doc;
+  }
+  getVilleRecherche() {
+    if (this.ville) {
+      return this.ville;
+    } else {
+      return null;
+    }
+  }
+
+  setUser(user: any) {
+    this.user = user;
+  }
+  getUser() {
+    return this.user;
+  }
+  setContent(content) {
+    this.content = content;
+  }
+  getContent() {
+    return this.content;
   }
 }

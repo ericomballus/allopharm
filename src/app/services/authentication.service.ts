@@ -155,27 +155,39 @@ export class AuthenticationService {
 
   async StoreUserData(data: any) {
     const db = getFirestore();
-    const colRef = doc(db, 'pharm/users', data.uid);
+    const colRef = collection(db, 'users');
     let adminId = '';
+    console.log(data);
 
     let user = data;
     let telephone = '0000';
+    let wallet = '0000';
+    let visa = '0000';
     if (data.phone) {
       telephone = data.phone;
+    }
+    if (data.wallet) {
+      wallet = data.wallet; /////
+    }
+    if (data.visa) {
+      visa = data.visa;
     }
     const userData = {
       uid: user.uid,
       email: user.email,
       name: user.name,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
       createdAt: serverTimestamp(),
       adminId: adminId,
       telephone: telephone,
+      visa: visa,
+      wallet: wallet,
+      userName: data.userName,
     };
+    console.log(userData);
+
     return new Promise(async (resolve, reject) => {
       try {
-        await setDoc(colRef, userData);
+        await addDoc(colRef, data);
         resolve('ok');
       } catch (error) {
         reject(error);
@@ -203,10 +215,10 @@ export class AuthenticationService {
     return this.userRole;
   }
 
-  getUser(uid: string): Promise<User> {
+  getUser(email: string): Promise<User> {
     const db = getFirestore();
     const colRef = collection(db, 'users');
-    const q = query(colRef, where('uid', '==', uid));
+    const q = query(colRef, where('email', '==', email));
     return new Promise((resolve, reject) => {
       getDocs(q)
         .then((snapshot) => {

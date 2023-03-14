@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/modeles/user-model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { SaveRandomService } from 'src/app/services/save-random.service';
 
 @Component({
   selector: 'app-auth',
@@ -13,7 +14,8 @@ export class AuthPage implements OnInit {
   constructor(
     public authService: AuthenticationService,
     public router: Router,
-    private notifi: NotificationService
+    private notifi: NotificationService,
+    private random: SaveRandomService
   ) {}
   ngOnInit() {}
   signUp(email: any, password: any) {
@@ -24,10 +26,12 @@ export class AuthPage implements OnInit {
       .SignIn(email.value, password.value)
       .then((res: any) => {
         console.log(res);
+        console.log(res.user.uid);
         this.authService
-          .getUser(res.user.uid)
+          .getUser(email.value)
           .then((user: User) => {
             console.log(user);
+            this.random.setUser(user);
             this.notifi.dismissLoading().then().catch();
             this.router.navigateByUrl('home');
             //

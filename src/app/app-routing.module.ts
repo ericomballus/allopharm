@@ -59,6 +59,14 @@ const routes: Routes = [
         (m) => m.DisplayCartPageModule
       ),
   },
+  {
+    path: 'filter',
+    loadChildren: () => import('./modals/filter/filter.module').then( m => m.FilterPageModule)
+  },
+  {
+    path: 'pharmacie-recherche',
+    loadChildren: () => import('./pharmacie-recherche/pharmacie-recherche.module').then( m => m.PharmacieRecherchePageModule)
+  },
 ];
 
 @NgModule({
